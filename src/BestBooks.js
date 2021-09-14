@@ -25,7 +25,7 @@ class MyFavoriteBooks extends React.Component {
     const { user } = this.props.auth0;
     const email = 'mohammadharoun44@gmail.com';
     axios
-    .get(`http://localhost:3030/books?email=${email}`)
+    .get(`https://mongo-can-of-books.herokuapp.com/books?email=${email}`)
     .then( result =>{
       this.setState({
         booksArr:result.data
@@ -50,7 +50,7 @@ class MyFavoriteBooks extends React.Component {
     }
 
     axios
-    .post(`http://localhost:3030/addBook`,obj)
+    .post(`https://mongo-can-of-books.herokuapp.com/addBook`,obj)
     .then(result =>{
       this.setState({
         booksArr: result.data
@@ -68,7 +68,7 @@ class MyFavoriteBooks extends React.Component {
     const { user } = this.props.auth0;
     const email = 'mohammadharoun44@gmail.com';
     axios
-    .delete(`http://localhost:3030/deleteBook/${id}?email=${email}`)
+    .delete(`https://mongo-can-of-books.herokuapp.com/deleteBook/${id}?email=${email}`)
     .then(result =>{
       this.setState({
         booksArr: result.data
@@ -122,11 +122,11 @@ class MyFavoriteBooks extends React.Component {
     <Form.Label>Book Description</Form.Label>
     <Form.Control type='text' name='description' placeholder='Book Description' />
   </Form.Group>
-  <Form.Label>Image URL</Form.Label>
+  <Form.Label>Author Email</Form.Label>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
     <Form.Check type='text' name='email' placeholder='Image URL' />
   </Form.Group>
-  <Form.Label>Author Email</Form.Label>
+  <Form.Label> Image URL </Form.Label>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
     <Form.Check type='text' name='status' placeholder='Author Email' />
   </Form.Group>
