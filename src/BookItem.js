@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
+import {Card,Button}  from 'react-bootstrap'
 
 class bookItem extends React.Component {
 
@@ -10,36 +11,43 @@ class bookItem extends React.Component {
        
         return(
             <>
-               <>
-               <Carousel variant="dark" style={{marginTop:'100px'}}>
+               
+               
               
-                   {this.props.booksArr.map((item) => {
-                       return(
-                        
-                      <Carousel.Item >
-                      <img
-                          className="d-block w-90 "
-                          src={item.status}
-                          alt="First slide"
-                      />
-                      <Carousel.Caption style={{color:'black', paddingLeft:'300px'}}>
-                          <h5>{item.title}</h5>
-                          <p><strong>Description: <br></br></strong> {item.description}</p>
 
-                    
-                    
-                          <p><strong>email: </strong>{item.email}</p>
-                          
-                          
-                      </Carousel.Caption>
-                  </Carousel.Item>
-                  
-                       )
-                   })}
-              
-              </Carousel>
-       </>
-            </>
+
+              {this.props.booksArr.map((item) => {
+                       return(
+                         
+                           <>
+                           <Card style={{ width: '18rem' }}>
+
+                        <Card.Img variant="top" src={item.status} />
+  <Card.Body>
+    <Card.Title>{item.title}</Card.Title>
+    <Card.Text>
+    {item.description}
+    <p><strong>email: </strong>{item.email}</p>
+    </Card.Text>
+    <Button onClick={() => this.props.deleteBook(item._id)}>Delete</Button>
+  </Card.Body>
+
+  </Card> 
+  </>
+  )})}  
+
+  
+
+
+</>
+
+                     
+
+                        
+
+
+       
+            
         )
     }
 }
